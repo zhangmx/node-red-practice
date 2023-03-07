@@ -1,0 +1,11 @@
+{
+	"recommendations": [
+		"mhutchie.git-graph",
+		"telesoho.excalidraw-editor-cj",
+		"hediet.vscode-drawio",
+		"nopeslide.vscode-drawio-plugin-mermaid",
+		"jebbs.plantuml",
+		"mkloubert.vscode-kanban",
+		"yy0931.vscode-sqlite3-editor"
+	]
+}

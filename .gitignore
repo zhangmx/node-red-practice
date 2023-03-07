@@ -102,3 +102,11 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Node-red configs
+*.backup
+.config.*
+flows_cred.json
+flows.json
+
+package-lock.json

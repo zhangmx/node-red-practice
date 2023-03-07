@@ -1,0 +1,240 @@
+[
+  {
+    "id": "23ace50339cc8aec",
+    "type": "subflow",
+    "name": "moc steps",
+    "info": "",
+    "category": "",
+    "in": [
+      {
+        "x": 60,
+        "y": 60,
+        "wires": [
+          {
+            "id": "cbba94598e0a31df"
+          }
+        ]
+      }
+    ],
+    "out": [],
+    "env": [],
+    "meta": {},
+    "color": "#DDAA99",
+    "icon": "node-red/arduino.png"
+  },
+  {
+    "id": "cbba94598e0a31df",
+    "type": "function",
+    "z": "23ace50339cc8aec",
+    "name": "hexBuffer2str",
+    "func": "\nfunction hexBuffer2str(BufferArray) {\n    let hexArray = [];\n    for (let i = 0; i < BufferArray.length; i++) {\n        let hex = BufferArray[i].toString(16).toUpperCase().padStart(2, '0');\n        hexArray.push(hex);\n    }\n    return hexArray.join(' ');\n}\n\nmsg.payload = hexBuffer2str(msg.payload);\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 190,
+    "y": 140,
+    "wires": [
+      [
+        "4d0197c9806cfa57",
+        "a828c49191dbe670"
+      ]
+    ]
+  },
+  {
+    "id": "4d0197c9806cfa57",
+    "type": "switch",
+    "z": "23ace50339cc8aec",
+    "name": "",
+    "property": "payload",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "eq",
+        "v": "01",
+        "vt": "str"
+      },
+      {
+        "t": "eq",
+        "v": "02",
+        "vt": "str"
+      },
+      {
+        "t": "else"
+      }
+    ],
+    "checkall": "false",
+    "repair": false,
+    "outputs": 3,
+    "x": 290,
+    "y": 280,
+    "wires": [
+      [
+        "e7b7867e3c4accc5"
+      ],
+      [
+        "152a7b7fc8ad7c4a"
+      ],
+      [
+        "c14581f102a05570"
+      ]
+    ]
+  },
+  {
+    "id": "e7b7867e3c4accc5",
+    "type": "change",
+    "z": "23ace50339cc8aec",
+    "name": "mock result 01",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "61 61",
+        "tot": "str"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 540,
+    "y": 200,
+    "wires": [
+      [
+        "3547e46498d23d29"
+      ]
+    ]
+  },
+  {
+    "id": "3547e46498d23d29",
+    "type": "function",
+    "z": "23ace50339cc8aec",
+    "name": "str2bufferArray",
+    "func": "var cmd_buffer_array = msg.payload.split(' ').map((s) => parseInt(s, 16));\n\nvar command_for_tcp = {\n    _session: msg._session,\n    host: msg.host,\n    port:msg.port\n}\ncommand_for_tcp.payload = Buffer.from(cmd_buffer_array);\n\nreturn command_for_tcp;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 1080,
+    "y": 280,
+    "wires": [
+      [
+        "73c11b3d0c3746d6"
+      ]
+    ]
+  },
+  {
+    "id": "73c11b3d0c3746d6",
+    "type": "tcp out",
+    "z": "23ace50339cc8aec",
+    "name": "reply: all open connections will be messaged",
+    "host": "",
+    "port": "",
+    "beserver": "reply",
+    "base64": false,
+    "end": false,
+    "x": 1130,
+    "y": 540,
+    "wires": []
+  },
+  {
+    "id": "c14581f102a05570",
+    "type": "change",
+    "z": "23ace50339cc8aec",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "",
+        "tot": "str"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 560,
+    "y": 440,
+    "wires": [
+      [
+        "73c11b3d0c3746d6"
+      ]
+    ]
+  },
+  {
+    "id": "152a7b7fc8ad7c4a",
+    "type": "change",
+    "z": "23ace50339cc8aec",
+    "name": "mock result 02",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "35 2A",
+        "tot": "str"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 540,
+    "y": 280,
+    "wires": [
+      [
+        "3547e46498d23d29",
+        "39693f46502c2b29"
+      ]
+    ]
+  },
+  {
+    "id": "39693f46502c2b29",
+    "type": "delay",
+    "z": "23ace50339cc8aec",
+    "name": "",
+    "pauseType": "delay",
+    "timeout": "100",
+    "timeoutUnits": "milliseconds",
+    "rate": "1",
+    "nbRateUnits": "1",
+    "rateUnits": "second",
+    "randomFirst": "1",
+    "randomLast": "5",
+    "randomUnits": "seconds",
+    "drop": false,
+    "allowrate": false,
+    "outputs": 1,
+    "x": 790,
+    "y": 340,
+    "wires": [
+      [
+        "3547e46498d23d29"
+      ]
+    ]
+  },
+  {
+    "id": "a828c49191dbe670",
+    "type": "debug",
+    "z": "23ace50339cc8aec",
+    "name": "debug 1",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "false",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 420,
+    "y": 120,
+    "wires": []
+  }
+]

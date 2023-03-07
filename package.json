@@ -1,0 +1,39 @@
+{
+  "name": "red-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "sh -ac '. ./environment; npm run entry'",
+    "entry": "node-red -u ./node_red_config",
+    "postinstall": "cd ./node_red_config && npm install",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangmx/node-red-practice.git"
+  },
+  "keywords": [
+    "node-red",
+    "practice"
+  ],
+  "author": "zhangmx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangmx/node-red-practice/issues"
+  },
+  "homepage": "https://github.com/zhangmx/node-red-practice#readme",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  },
+  "dependencies": {
+    "node-red": "^3.0.2"
+  },
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ],
+  "modulePaths": [
+    "<rootDir>/src/"
+  ]
+}
