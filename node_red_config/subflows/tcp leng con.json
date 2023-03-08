@@ -1,0 +1,146 @@
+[
+  {
+    "id": "b8af3da32fdbe614",
+    "type": "subflow",
+    "name": "tcp leng con",
+    "info": "",
+    "category": "",
+    "in": [
+      {
+        "x": 120,
+        "y": 260,
+        "wires": [
+          {
+            "id": "eb7d2b46ed16ac4b"
+          }
+        ]
+      }
+    ],
+    "out": [
+      {
+        "x": 640,
+        "y": 260,
+        "wires": [
+          {
+            "id": "f40b2f2237cc672d",
+            "port": 0
+          }
+        ]
+      },
+      {
+        "x": 640,
+        "y": 320,
+        "wires": [
+          {
+            "id": "acf0b0aeb68fe54e",
+            "port": 0
+          }
+        ]
+      }
+    ],
+    "env": [
+      {
+        "name": "Host",
+        "type": "str",
+        "value": ""
+      },
+      {
+        "name": "envHost",
+        "type": "env",
+        "value": "HOST0"
+      }
+    ],
+    "meta": {},
+    "color": "#DDAA99",
+    "status": {
+      "x": 640,
+      "y": 380,
+      "wires": [
+        {
+          "id": "55a21835a9136443",
+          "port": 0
+        }
+      ]
+    }
+  },
+  {
+    "id": "f40b2f2237cc672d",
+    "type": "tcp request",
+    "z": "b8af3da32fdbe614",
+    "name": "tcp client",
+    "server": "",
+    "port": "",
+    "out": "sit",
+    "ret": "buffer",
+    "splitc": " ",
+    "newline": "",
+    "trim": false,
+    "tls": "",
+    "x": 500,
+    "y": 260,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "55a21835a9136443",
+    "type": "status",
+    "z": "b8af3da32fdbe614",
+    "name": "",
+    "scope": [
+      "f40b2f2237cc672d"
+    ],
+    "x": 380,
+    "y": 380,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "eb7d2b46ed16ac4b",
+    "type": "change",
+    "z": "b8af3da32fdbe614",
+    "name": "localhost 1234",
+    "rules": [
+      {
+        "t": "set",
+        "p": "host",
+        "pt": "msg",
+        "to": "envHost",
+        "tot": "env"
+      },
+      {
+        "t": "set",
+        "p": "port",
+        "pt": "msg",
+        "to": "port0",
+        "tot": "global"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 280,
+    "y": 260,
+    "wires": [
+      [
+        "f40b2f2237cc672d"
+      ]
+    ]
+  },
+  {
+    "id": "acf0b0aeb68fe54e",
+    "type": "catch",
+    "z": "b8af3da32fdbe614",
+    "name": "",
+    "scope": null,
+    "uncaught": false,
+    "x": 380,
+    "y": 320,
+    "wires": [
+      []
+    ]
+  }
+]
