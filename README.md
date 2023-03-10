@@ -21,6 +21,8 @@ Run as embedded Node-RED server. Listen on port 1988([Reply 1988](https://en.wik
 npm start
 ```
 
+> Note: this is not a good practice. It is better to run as standalone Node-RED server. It can not install ui-dashboard. UI dashboard is not available in embedded mode. Because `ui` url not included in express app.
+
 ### 2. Run as standalone Node-RED server
 
 machine0 is the machine that runs Node-RED. Start with environment variable `PORT` set to 1980 in `environment` file.
