@@ -12,6 +12,18 @@
     "type": "inject",
     "z": "1285e099664f8de3",
     "name": "",
+    "props": [
+      {
+        "p": "payload",
+        "v": "[{\"Name\":\"Kazuhito Yokoi\",\"Age\":\"35\",\"Favourite Color\":\"red\",\"Date Of Birth\":\"12/09/1983\"},{\"Name\":\"Oli Bob\",\"Age\":\"12\",\"Favourite Color\":\"red\",\"Date Of Birth\":\"12/08/2017\"}]",
+        "vt": "json"
+      },
+      {
+        "p": "topic",
+        "v": "",
+        "vt": "str"
+      }
+    ],
     "repeat": "",
     "crontab": "",
     "once": false,
@@ -33,10 +45,11 @@
     "z": "1285e099664f8de3",
     "group": "625872f.40b1e8c",
     "name": "",
-    "width": 0,
+    "width": "6",
     "height": 4,
     "columns": [],
     "outputs": 0,
+    "cts": false,
     "x": 390,
     "y": 100,
     "wires": []
@@ -76,10 +89,10 @@
     "payload": "[{\"Name\":\"<b>Yokoi</b>\",\"Age\":\"30\",\"Color\":\"lime\",\"Prog\":70,\"Star\":\"3\"},{\"Name\":\"<i>DCJ</i>\",\"Age\":\"50\",\"Color\":\"dodgerblue\",\"Prog\":\"45\",\"Star\":2,\"Pass\":false,\"web\":\"\"},{\"Name\":\"Nick\",\"Age\":\"40\",\"Color\":\"darkred\",\"Prog\":95,\"Star\":\"5\",\"Pass\":true,\"web\":\"http://nodered.org\"},{\"Name\":\"Oli\"}]",
     "payloadType": "json",
     "x": 190,
-    "y": 180,
+    "y": 220,
     "wires": [
       [
-        "4f37dbf1c909c31d"
+        "7d48e13.90ee22"
       ]
     ]
   },
@@ -108,10 +121,10 @@
     "payload": "[{\"Name\":\"<b>Yokoi</b>\",\"Age\":\"30\",\"Color\":\"lime\",\"Prog\":20,\"Star\":\"1\"},{\"Name\":\"<i>DCJ</i>\",\"Age\":\"50\",\"Color\":\"dodgerblue\",\"Prog\":\"80\",\"Star\":4,\"Pass\":true,\"web\":\"\"},{\"Name\":\"Nick\",\"Age\":\"40\",\"Color\":\"red\",\"Prog\":90,\"Star\":\"5\",\"Pass\":true,\"web\":\"http://nodered.org\"},{\"Name\":\"Oli\"}]",
     "payloadType": "json",
     "x": 190,
-    "y": 220,
+    "y": 260,
     "wires": [
       [
-        "4f37dbf1c909c31d"
+        "7d48e13.90ee22"
       ]
     ]
   },
@@ -123,7 +136,7 @@
     "name": "People",
     "order": 1,
     "width": "8",
-    "height": "3",
+    "height": "5",
     "columns": [
       {
         "field": "Name",
@@ -199,7 +212,7 @@
     "outputs": 1,
     "cts": true,
     "x": 660,
-    "y": 180,
+    "y": 220,
     "wires": [
       [
         "41e82408528a8563"
@@ -1853,7 +1866,7 @@
     "id": "bada4241cd727c4c",
     "type": "function",
     "z": "1285e099664f8de3",
-    "name": "getSelectedRows",
+    "name": "getSelectedData",
     "func": "msg.payload={\n    command:\"getSelectedData\",\n    arguments: [],\n    returnPromise: true\n}\nreturn msg;",
     "outputs": 1,
     "noerr": 0,
@@ -1861,7 +1874,7 @@
     "finalize": "",
     "libs": [],
     "x": 434,
-    "y": 300,
+    "y": 340,
     "wires": [
       [
         "7d48e13.90ee22"
@@ -1890,8 +1903,8 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 204,
-    "y": 300,
+    "x": 220,
+    "y": 340,
     "wires": [
       [
         "bada4241cd727c4c"
@@ -1929,38 +1942,11 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 140,
-    "y": 260,
+    "x": 200,
+    "y": 300,
     "wires": [
       [
         "e5e684ef22f2dbb2"
-      ]
-    ]
-  },
-  {
-    "id": "4f37dbf1c909c31d",
-    "type": "change",
-    "z": "1285e099664f8de3",
-    "name": "ui_control",
-    "rules": [
-      {
-        "t": "set",
-        "p": "ui_control",
-        "pt": "msg",
-        "to": "{\"tabulator\":{\"selectable\":1,\"columns\":[{\"formatter\":\"rowSelection\",\"titleFormatter\":\"rowSelection\",\"align\":\"center\",\"headerSort\":false},{\"formatterParams\":{\"target\":\"_blank\"},\"title\":\"ROom\",\"field\":\"room\",\"width\":100,\"frozen\":true}]}}",
-        "tot": "json"
-      }
-    ],
-    "action": "",
-    "property": "",
-    "from": "",
-    "to": "",
-    "reg": false,
-    "x": 380,
-    "y": 180,
-    "wires": [
-      [
-        "7d48e13.90ee22"
       ]
     ]
   },
@@ -2001,7 +1987,7 @@
     "finalize": "",
     "libs": [],
     "x": 400,
-    "y": 240,
+    "y": 280,
     "wires": [
       [
         "7d48e13.90ee22"
@@ -2013,7 +1999,7 @@
     "id": "41e82408528a8563",
     "type": "debug",
     "z": "1285e099664f8de3",
-    "name": "debug 7",
+    "name": "data return from command",
     "active": true,
     "tosidebar": true,
     "console": false,
@@ -2022,8 +2008,64 @@
     "targetType": "full",
     "statusVal": "",
     "statusType": "auto",
-    "x": 840,
-    "y": 180,
+    "x": 900,
+    "y": 220,
     "wires": []
+  },
+  {
+    "id": "3a570391f78b510c",
+    "type": "inject",
+    "z": "1285e099664f8de3",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": true,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 210,
+    "y": 180,
+    "wires": [
+      [
+        "a796b0823c216563"
+      ]
+    ]
+  },
+  {
+    "id": "a796b0823c216563",
+    "type": "change",
+    "z": "1285e099664f8de3",
+    "name": "ui_control",
+    "rules": [
+      {
+        "t": "set",
+        "p": "ui_control",
+        "pt": "msg",
+        "to": "{\"tabulator\":{\"selectable\":3,\"columns\":[{\"formatter\":\"rowSelection\",\"titleFormatter\":\"rowSelection\",\"align\":\"center\",\"headerSort\":false}]}}",
+        "tot": "json"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 380,
+    "y": 180,
+    "wires": [
+      [
+        "7d48e13.90ee22"
+      ]
+    ]
   }
 ]
