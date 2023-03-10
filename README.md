@@ -41,3 +41,17 @@ machine1 use port 1881, machine2 use port 1882.
 npm run machine1
 npm run machine2
 ```
+
+
+## Some tips
+
+### npm install git subfolder
+
+https://github.com/zhangmx/node-red-ui-nodes node-red-node-ui-table
+
+
+```bash
+
+npm install https://gitpkg.now.sh/zhangmx/node-red-ui-nodes/node-red-node-ui-table?master
+
+```
