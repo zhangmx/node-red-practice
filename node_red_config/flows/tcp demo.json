@@ -829,5 +829,73 @@
     "x": 760,
     "y": 280,
     "wires": []
+  },
+  {
+    "id": "7124bb883a98fa69",
+    "type": "exec",
+    "z": "7862a34a08f3a48c",
+    "command": "cd node_red_config  && npm version | grep node-red-project",
+    "addpay": "",
+    "append": "",
+    "useSpawn": "false",
+    "timer": "",
+    "winHide": false,
+    "oldrc": false,
+    "name": "",
+    "x": 440,
+    "y": 80,
+    "wires": [
+      [
+        "03ee310610f6ba27"
+      ],
+      [],
+      []
+    ]
+  },
+  {
+    "id": "0acf576808478e7d",
+    "type": "inject",
+    "z": "7862a34a08f3a48c",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 180,
+    "y": 140,
+    "wires": [
+      [
+        "7124bb883a98fa69"
+      ]
+    ]
+  },
+  {
+    "id": "03ee310610f6ba27",
+    "type": "debug",
+    "z": "7862a34a08f3a48c",
+    "name": "debug exec output",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 690,
+    "y": 220,
+    "wires": []
   }
 ]
