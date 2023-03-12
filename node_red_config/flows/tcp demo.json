@@ -764,5 +764,70 @@
         "30123cdfc0e3e013"
       ]
     ]
+  },
+  {
+    "id": "42756ea0549a795f",
+    "type": "function",
+    "z": "7862a34a08f3a48c",
+    "name": "get version from package.json",
+    "func": "/**\n    functionGlobalContext: {\n        // os:require('os'),\n        require:require\n    },\n */\n\nvar _require = global.get('require');\n// let version = _require('root-require')('package.json').version\nlet version = _require('./package').version\n\n// var pjson = require('./package.json');\n\nmsg.payload = version\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 450,
+    "y": 280,
+    "wires": [
+      [
+        "0f6087ee8ca774bc"
+      ]
+    ]
+  },
+  {
+    "id": "c53869c217a976c7",
+    "type": "inject",
+    "z": "7862a34a08f3a48c",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 180,
+    "y": 280,
+    "wires": [
+      [
+        "42756ea0549a795f"
+      ]
+    ]
+  },
+  {
+    "id": "0f6087ee8ca774bc",
+    "type": "debug",
+    "z": "7862a34a08f3a48c",
+    "name": "version",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 760,
+    "y": 280,
+    "wires": []
   }
 ]
