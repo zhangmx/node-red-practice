@@ -6,6 +6,7 @@
     "dependencies": {
         "node-red-contrib-flow-manager": "~0.7.4",
         "node-red-dashboard": "~3.3.1",
-        "node-red-node-ui-table": "https://gitpkg.now.sh/zhangmx/node-red-ui-nodes/node-red-node-ui-table?master"
+        "node-red-node-ui-table": "https://gitpkg.now.sh/zhangmx/node-red-ui-nodes/node-red-node-ui-table?master",
+        "nrlint": "^1.1.0"
     }
 }
