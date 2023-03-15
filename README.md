@@ -57,6 +57,8 @@ A simple tcp server and client.
 
 7 examples of table(`node-red-node-ui-table`) node.
 
+1 example about select one row after Table init.
+
 ## Some tips
 
 ### npm install git subfolder
