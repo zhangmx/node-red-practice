@@ -43,8 +43,8 @@
       "30123cdfc0e3e013",
       "4559eee0c3cbbaee"
     ],
-    "x": 94,
-    "y": 1939,
+    "x": 54,
+    "y": 59,
     "w": 1072,
     "h": 762
   },
@@ -74,42 +74,9 @@
       "b0acd6258de6b653",
       "116ae6d3ca413997"
     ],
-    "x": 1254,
-    "y": 1919,
+    "x": 54,
+    "y": 879,
     "w": 1112,
-    "h": 382
-  },
-  {
-    "id": "c8fe8ba19da7f324",
-    "type": "group",
-    "z": "7862a34a08f3a48c",
-    "style": {
-      "stroke": "#999999",
-      "stroke-opacity": "1",
-      "fill": "none",
-      "fill-opacity": "1",
-      "label": true,
-      "label-position": "nw",
-      "color": "#a4a4a4"
-    },
-    "nodes": [
-      "42756ea0549a795f",
-      "c53869c217a976c7",
-      "0f6087ee8ca774bc",
-      "7124bb883a98fa69",
-      "0acf576808478e7d",
-      "03ee310610f6ba27",
-      "5dfd7d40531ea9e8",
-      "ae18ddb26fc89985",
-      "c2fcef29dbe64088",
-      "3bada01882d5c4c6",
-      "bbc0e1fce90fa528",
-      "863bb3a32aec973f",
-      "14765ff34134b5bc"
-    ],
-    "x": 74,
-    "y": 119,
-    "w": 1052,
     "h": 382
   },
   {
@@ -128,8 +95,8 @@
     "trim": false,
     "base64": false,
     "tls": "",
-    "x": 240,
-    "y": 2080,
+    "x": 200,
+    "y": 200,
     "wires": [
       [
         "304c1ef83519af82",
@@ -151,8 +118,8 @@
     "targetType": "full",
     "statusVal": "",
     "statusType": "auto",
-    "x": 690,
-    "y": 2080,
+    "x": 650,
+    "y": 200,
     "wires": []
   },
   {
@@ -161,8 +128,8 @@
     "z": "7862a34a08f3a48c",
     "g": "35de261249cdd446",
     "name": "",
-    "x": 650,
-    "y": 2140,
+    "x": 610,
+    "y": 260,
     "wires": []
   },
   {
@@ -179,8 +146,8 @@
     "newline": "",
     "trim": false,
     "tls": "",
-    "x": 2000,
-    "y": 1960,
+    "x": 800,
+    "y": 920,
     "wires": [
       [
         "3a52babadb278923"
@@ -214,8 +181,8 @@
     "from": "",
     "to": "",
     "reg": false,
-    "x": 1800,
-    "y": 1960,
+    "x": 600,
+    "y": 920,
     "wires": [
       [
         "4c355020278b364b"
@@ -244,8 +211,8 @@
     "topic": "",
     "payload": "",
     "payloadType": "str",
-    "x": 1350,
-    "y": 2160,
+    "x": 150,
+    "y": 1120,
     "wires": [
       [
         "116ae6d3ca413997"
@@ -266,8 +233,8 @@
     "targetType": "full",
     "statusVal": "",
     "statusType": "auto",
-    "x": 2220,
-    "y": 1960,
+    "x": 1020,
+    "y": 920,
     "wires": []
   },
   {
@@ -287,8 +254,8 @@
     "once": false,
     "onceDelay": 0.1,
     "topic": "",
-    "x": 1350,
-    "y": 1960,
+    "x": 150,
+    "y": 920,
     "wires": [
       [
         "a11dd86553a1860b"
@@ -315,8 +282,8 @@
     "from": "",
     "to": "",
     "reg": false,
-    "x": 1510,
-    "y": 1960,
+    "x": 310,
+    "y": 920,
     "wires": [
       [
         "6b2ea9026db5ab1f"
@@ -332,8 +299,8 @@
     "scope": [
       "4c355020278b364b"
     ],
-    "x": 1620,
-    "y": 2260,
+    "x": 420,
+    "y": 1220,
     "wires": [
       [
         "b99d375491ef3a28"
@@ -360,8 +327,8 @@
     "from": "",
     "to": "",
     "reg": false,
-    "x": 1900,
-    "y": 2260,
+    "x": 700,
+    "y": 1220,
     "wires": [
       [
         "7ae07e98ba2a6547"
@@ -382,8 +349,8 @@
     "targetType": "full",
     "statusVal": "",
     "statusType": "auto",
-    "x": 2160,
-    "y": 2260,
+    "x": 960,
+    "y": 1220,
     "wires": []
   },
   {
@@ -408,8 +375,8 @@
     "topic": "",
     "payload": "[2]",
     "payloadType": "bin",
-    "x": 1350,
-    "y": 2080,
+    "x": 150,
+    "y": 1040,
     "wires": [
       [
         "6b2ea9026db5ab1f"
@@ -428,8 +395,8 @@
     "base64": false,
     "end": false,
     "tls": "",
-    "x": 550,
-    "y": 2200,
+    "x": 510,
+    "y": 320,
     "wires": []
   },
   {
@@ -454,8 +421,8 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 200,
-    "y": 2200,
+    "x": 160,
+    "y": 320,
     "wires": [
       [
         "fe22f9cc6ffeb28d"
@@ -489,8 +456,8 @@
     "from": "",
     "to": "",
     "reg": false,
-    "x": 1800,
-    "y": 2080,
+    "x": 600,
+    "y": 1040,
     "wires": [
       [
         "4c355020278b364b"
@@ -519,8 +486,8 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 870,
-    "y": 2220,
+    "x": 830,
+    "y": 340,
     "wires": [
       [
         "74d8dd142a10b5f7"
@@ -554,8 +521,8 @@
     "from": "",
     "to": "",
     "reg": false,
-    "x": 1060,
-    "y": 2220,
+    "x": 1020,
+    "y": 340,
     "wires": [
       []
     ]
@@ -573,8 +540,8 @@
         "type": "env"
       }
     ],
-    "x": 570,
-    "y": 2340,
+    "x": 530,
+    "y": 460,
     "wires": [
       [
         "aabd71ac1fc04124"
@@ -606,8 +573,8 @@
     "topic": "",
     "payload": "",
     "payloadType": "date",
-    "x": 870,
-    "y": 2160,
+    "x": 830,
+    "y": 280,
     "wires": [
       [
         "2c8e5a3872ff4680"
@@ -636,8 +603,8 @@
     "topic": "",
     "payload": "[2]",
     "payloadType": "bin",
-    "x": 190,
-    "y": 2420,
+    "x": 150,
+    "y": 540,
     "wires": [
       [
         "aac97dd8bf68c2bd"
@@ -657,8 +624,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 840,
-    "y": 2300,
+    "x": 800,
+    "y": 420,
     "wires": []
   },
   {
@@ -683,8 +650,8 @@
     "topic": "",
     "payload": "[1]",
     "payloadType": "bin",
-    "x": 190,
-    "y": 2300,
+    "x": 150,
+    "y": 420,
     "wires": [
       [
         "aac97dd8bf68c2bd"
@@ -704,8 +671,8 @@
         "type": "env"
       }
     ],
-    "x": 570,
-    "y": 2580,
+    "x": 530,
+    "y": 700,
     "wires": [
       [
         "0f80f1703f1327e7"
@@ -737,8 +704,8 @@
     "topic": "",
     "payload": "[2]",
     "payloadType": "bin",
-    "x": 190,
-    "y": 2660,
+    "x": 150,
+    "y": 780,
     "wires": [
       [
         "f1c2538819427ef6"
@@ -758,8 +725,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 840,
-    "y": 2580,
+    "x": 800,
+    "y": 700,
     "wires": []
   },
   {
@@ -784,8 +751,8 @@
     "topic": "",
     "payload": "[1]",
     "payloadType": "bin",
-    "x": 190,
-    "y": 2540,
+    "x": 150,
+    "y": 660,
     "wires": [
       [
         "f1c2538819427ef6"
@@ -805,8 +772,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 840,
-    "y": 2400,
+    "x": 800,
+    "y": 520,
     "wires": []
   },
   {
@@ -822,8 +789,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 840,
-    "y": 2640,
+    "x": 800,
+    "y": 760,
     "wires": []
   },
   {
@@ -849,8 +816,8 @@
     "from": "",
     "to": "",
     "reg": false,
-    "x": 1060,
-    "y": 2160,
+    "x": 1020,
+    "y": 280,
     "wires": [
       []
     ]
@@ -868,8 +835,8 @@
     "complete": "false",
     "statusVal": "",
     "statusType": "auto",
-    "x": 560,
-    "y": 1980,
+    "x": 520,
+    "y": 100,
     "wires": []
   },
   {
@@ -894,331 +861,11 @@
     "topic": "",
     "payload": "HOST0",
     "payloadType": "env",
-    "x": 210,
-    "y": 1980,
+    "x": 170,
+    "y": 100,
     "wires": [
       [
         "30123cdfc0e3e013"
-      ]
-    ]
-  },
-  {
-    "id": "42756ea0549a795f",
-    "type": "function",
-    "z": "7862a34a08f3a48c",
-    "g": "c8fe8ba19da7f324",
-    "name": "get version from package.json",
-    "func": "/**\n    functionGlobalContext: {\n        // os:require('os'),\n        require:require\n    },\n */\n\nvar _require = global.get('require');\n// let version = _require('root-require')('package.json').version\nlet version = _require('./package').version\n\n// var pjson = require('./package.json');\n\nmsg.payload = version\n\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 450,
-    "y": 160,
-    "wires": [
-      [
-        "0f6087ee8ca774bc"
-      ]
-    ]
-  },
-  {
-    "id": "c53869c217a976c7",
-    "type": "inject",
-    "z": "7862a34a08f3a48c",
-    "g": "c8fe8ba19da7f324",
-    "name": "",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "",
-    "payloadType": "date",
-    "x": 180,
-    "y": 160,
-    "wires": [
-      [
-        "42756ea0549a795f"
-      ]
-    ]
-  },
-  {
-    "id": "0f6087ee8ca774bc",
-    "type": "debug",
-    "z": "7862a34a08f3a48c",
-    "g": "c8fe8ba19da7f324",
-    "name": "version",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 760,
-    "y": 160,
-    "wires": []
-  },
-  {
-    "id": "7124bb883a98fa69",
-    "type": "exec",
-    "z": "7862a34a08f3a48c",
-    "g": "c8fe8ba19da7f324",
-    "command": "cd node_red_config  && ",
-    "addpay": "payload",
-    "append": "",
-    "useSpawn": "false",
-    "timer": "",
-    "winHide": false,
-    "oldrc": false,
-    "name": "",
-    "x": 630,
-    "y": 280,
-    "wires": [
-      [
-        "03ee310610f6ba27"
-      ],
-      [],
-      []
-    ]
-  },
-  {
-    "id": "0acf576808478e7d",
-    "type": "inject",
-    "z": "7862a34a08f3a48c",
-    "g": "c8fe8ba19da7f324",
-    "name": " npm version | grep node-red-project",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": " npm version | grep node-red-project",
-    "payloadType": "str",
-    "x": 260,
-    "y": 280,
-    "wires": [
-      [
-        "7124bb883a98fa69"
-      ]
-    ]
-  },
-  {
-    "id": "03ee310610f6ba27",
-    "type": "debug",
-    "z": "7862a34a08f3a48c",
-    "g": "c8fe8ba19da7f324",
-    "name": "debug exec output",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 930,
-    "y": 280,
-    "wires": []
-  },
-  {
-    "id": "5dfd7d40531ea9e8",
-    "type": "inject",
-    "z": "7862a34a08f3a48c",
-    "g": "c8fe8ba19da7f324",
-    "name": "npm --no-git-tag-version version major",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "npm --no-git-tag-version version major",
-    "payloadType": "str",
-    "x": 270,
-    "y": 340,
-    "wires": [
-      [
-        "7124bb883a98fa69"
-      ]
-    ]
-  },
-  {
-    "id": "ae18ddb26fc89985",
-    "type": "inject",
-    "z": "7862a34a08f3a48c",
-    "g": "c8fe8ba19da7f324",
-    "name": " npm version ",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": " npm version",
-    "payloadType": "str",
-    "x": 190,
-    "y": 220,
-    "wires": [
-      [
-        "c2fcef29dbe64088"
-      ]
-    ]
-  },
-  {
-    "id": "c2fcef29dbe64088",
-    "type": "exec",
-    "z": "7862a34a08f3a48c",
-    "g": "c8fe8ba19da7f324",
-    "command": "cd node_red_config  && ",
-    "addpay": "payload",
-    "append": "",
-    "useSpawn": "false",
-    "timer": "",
-    "winHide": false,
-    "oldrc": false,
-    "name": "",
-    "x": 630,
-    "y": 220,
-    "wires": [
-      [
-        "863bb3a32aec973f"
-      ],
-      [],
-      []
-    ]
-  },
-  {
-    "id": "3bada01882d5c4c6",
-    "type": "inject",
-    "z": "7862a34a08f3a48c",
-    "g": "c8fe8ba19da7f324",
-    "name": "npm --no-git-tag-version version minor",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "npm --no-git-tag-version version minor",
-    "payloadType": "str",
-    "x": 270,
-    "y": 400,
-    "wires": [
-      [
-        "7124bb883a98fa69"
-      ]
-    ]
-  },
-  {
-    "id": "bbc0e1fce90fa528",
-    "type": "debug",
-    "z": "7862a34a08f3a48c",
-    "g": "c8fe8ba19da7f324",
-    "name": "version obj",
-    "active": true,
-    "tosidebar": true,
-    "console": false,
-    "tostatus": false,
-    "complete": "payload",
-    "targetType": "msg",
-    "statusVal": "",
-    "statusType": "auto",
-    "x": 1010,
-    "y": 220,
-    "wires": []
-  },
-  {
-    "id": "863bb3a32aec973f",
-    "type": "function",
-    "z": "7862a34a08f3a48c",
-    "g": "c8fe8ba19da7f324",
-    "name": "eval",
-    "func": "msg.payload = eval(' versions = ' + msg.payload)\nreturn msg;",
-    "outputs": 1,
-    "noerr": 0,
-    "initialize": "",
-    "finalize": "",
-    "libs": [],
-    "x": 830,
-    "y": 220,
-    "wires": [
-      [
-        "bbc0e1fce90fa528"
-      ]
-    ]
-  },
-  {
-    "id": "14765ff34134b5bc",
-    "type": "inject",
-    "z": "7862a34a08f3a48c",
-    "g": "c8fe8ba19da7f324",
-    "name": "npm --no-git-tag-version version patch",
-    "props": [
-      {
-        "p": "payload"
-      },
-      {
-        "p": "topic",
-        "vt": "str"
-      }
-    ],
-    "repeat": "",
-    "crontab": "",
-    "once": false,
-    "onceDelay": 0.1,
-    "topic": "",
-    "payload": "npm --no-git-tag-version version patch",
-    "payloadType": "str",
-    "x": 270,
-    "y": 460,
-    "wires": [
-      [
-        "7124bb883a98fa69"
       ]
     ]
   }

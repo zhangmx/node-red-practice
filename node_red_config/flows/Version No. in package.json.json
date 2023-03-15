@@ -1,0 +1,363 @@
+[
+  {
+    "id": "78555bf0b05aff6d",
+    "type": "tab",
+    "label": "Version No. in package.json",
+    "disabled": false,
+    "info": "",
+    "env": []
+  },
+  {
+    "id": "c8fe8ba19da7f324",
+    "type": "group",
+    "z": "78555bf0b05aff6d",
+    "style": {
+      "stroke": "#999999",
+      "stroke-opacity": "1",
+      "fill": "none",
+      "fill-opacity": "1",
+      "label": true,
+      "label-position": "nw",
+      "color": "#a4a4a4"
+    },
+    "nodes": [
+      "42756ea0549a795f",
+      "c53869c217a976c7",
+      "0f6087ee8ca774bc",
+      "7124bb883a98fa69",
+      "0acf576808478e7d",
+      "03ee310610f6ba27",
+      "5dfd7d40531ea9e8",
+      "ae18ddb26fc89985",
+      "c2fcef29dbe64088",
+      "3bada01882d5c4c6",
+      "bbc0e1fce90fa528",
+      "863bb3a32aec973f",
+      "14765ff34134b5bc"
+    ],
+    "x": 74,
+    "y": 99,
+    "w": 1052,
+    "h": 382
+  },
+  {
+    "id": "42756ea0549a795f",
+    "type": "function",
+    "z": "78555bf0b05aff6d",
+    "g": "c8fe8ba19da7f324",
+    "name": "get version from package.json",
+    "func": "/**\n    functionGlobalContext: {\n        // os:require('os'),\n        require:require\n    },\n */\n\nvar _require = global.get('require');\n// let version = _require('root-require')('package.json').version\nlet version = _require('./package').version\n\n// var pjson = require('./package.json');\n\nmsg.payload = version\n\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 450,
+    "y": 140,
+    "wires": [
+      [
+        "0f6087ee8ca774bc"
+      ]
+    ]
+  },
+  {
+    "id": "c53869c217a976c7",
+    "type": "inject",
+    "z": "78555bf0b05aff6d",
+    "g": "c8fe8ba19da7f324",
+    "name": "",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "x": 180,
+    "y": 140,
+    "wires": [
+      [
+        "42756ea0549a795f"
+      ]
+    ]
+  },
+  {
+    "id": "0f6087ee8ca774bc",
+    "type": "debug",
+    "z": "78555bf0b05aff6d",
+    "g": "c8fe8ba19da7f324",
+    "name": "version",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 760,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "7124bb883a98fa69",
+    "type": "exec",
+    "z": "78555bf0b05aff6d",
+    "g": "c8fe8ba19da7f324",
+    "command": "cd node_red_config  && ",
+    "addpay": "payload",
+    "append": "",
+    "useSpawn": "false",
+    "timer": "",
+    "winHide": false,
+    "oldrc": false,
+    "name": "",
+    "x": 630,
+    "y": 260,
+    "wires": [
+      [
+        "03ee310610f6ba27"
+      ],
+      [],
+      []
+    ]
+  },
+  {
+    "id": "0acf576808478e7d",
+    "type": "inject",
+    "z": "78555bf0b05aff6d",
+    "g": "c8fe8ba19da7f324",
+    "name": " npm version | grep node-red-project",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": " npm version | grep node-red-project",
+    "payloadType": "str",
+    "x": 260,
+    "y": 260,
+    "wires": [
+      [
+        "7124bb883a98fa69"
+      ]
+    ]
+  },
+  {
+    "id": "03ee310610f6ba27",
+    "type": "debug",
+    "z": "78555bf0b05aff6d",
+    "g": "c8fe8ba19da7f324",
+    "name": "debug exec output",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 930,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "5dfd7d40531ea9e8",
+    "type": "inject",
+    "z": "78555bf0b05aff6d",
+    "g": "c8fe8ba19da7f324",
+    "name": "npm --no-git-tag-version version major",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "npm --no-git-tag-version version major",
+    "payloadType": "str",
+    "x": 270,
+    "y": 320,
+    "wires": [
+      [
+        "7124bb883a98fa69"
+      ]
+    ]
+  },
+  {
+    "id": "ae18ddb26fc89985",
+    "type": "inject",
+    "z": "78555bf0b05aff6d",
+    "g": "c8fe8ba19da7f324",
+    "name": " npm version ",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": " npm version",
+    "payloadType": "str",
+    "x": 190,
+    "y": 200,
+    "wires": [
+      [
+        "c2fcef29dbe64088"
+      ]
+    ]
+  },
+  {
+    "id": "c2fcef29dbe64088",
+    "type": "exec",
+    "z": "78555bf0b05aff6d",
+    "g": "c8fe8ba19da7f324",
+    "command": "cd node_red_config  && ",
+    "addpay": "payload",
+    "append": "",
+    "useSpawn": "false",
+    "timer": "",
+    "winHide": false,
+    "oldrc": false,
+    "name": "",
+    "x": 630,
+    "y": 200,
+    "wires": [
+      [
+        "863bb3a32aec973f"
+      ],
+      [],
+      []
+    ]
+  },
+  {
+    "id": "3bada01882d5c4c6",
+    "type": "inject",
+    "z": "78555bf0b05aff6d",
+    "g": "c8fe8ba19da7f324",
+    "name": "npm --no-git-tag-version version minor",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "npm --no-git-tag-version version minor",
+    "payloadType": "str",
+    "x": 270,
+    "y": 380,
+    "wires": [
+      [
+        "7124bb883a98fa69"
+      ]
+    ]
+  },
+  {
+    "id": "bbc0e1fce90fa528",
+    "type": "debug",
+    "z": "78555bf0b05aff6d",
+    "g": "c8fe8ba19da7f324",
+    "name": "version obj",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "payload",
+    "targetType": "msg",
+    "statusVal": "",
+    "statusType": "auto",
+    "x": 1010,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "863bb3a32aec973f",
+    "type": "function",
+    "z": "78555bf0b05aff6d",
+    "g": "c8fe8ba19da7f324",
+    "name": "eval",
+    "func": "msg.payload = eval(' versions = ' + msg.payload)\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "x": 830,
+    "y": 200,
+    "wires": [
+      [
+        "bbc0e1fce90fa528"
+      ]
+    ]
+  },
+  {
+    "id": "14765ff34134b5bc",
+    "type": "inject",
+    "z": "78555bf0b05aff6d",
+    "g": "c8fe8ba19da7f324",
+    "name": "npm --no-git-tag-version version patch",
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "topic": "",
+    "payload": "npm --no-git-tag-version version patch",
+    "payloadType": "str",
+    "x": 270,
+    "y": 440,
+    "wires": [
+      [
+        "7124bb883a98fa69"
+      ]
+    ]
+  }
+]
