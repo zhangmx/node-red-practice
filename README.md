@@ -41,6 +41,22 @@ npm run machine1
 npm run machine2
 ```
 
+## Flows
+
+### 1. Version No. in package.json
+
+Get version number from package.json and retrun it to debug node.
+
+Manual update version number in package.json.
+
+### 2. tcp demo
+
+A simple tcp server and client.
+
+### 3. table demo
+
+7 examples of table(`node-red-node-ui-table`) node.
+
 ## Some tips
 
 ### npm install git subfolder
