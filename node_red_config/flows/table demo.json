@@ -1465,7 +1465,7 @@
     "type": "debug",
     "z": "1285e099664f8de3",
     "name": "table input",
-    "active": true,
+    "active": false,
     "tosidebar": true,
     "console": false,
     "tostatus": false,
