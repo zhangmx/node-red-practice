@@ -106,7 +106,7 @@ dist
 # Node-red configs
 *.backup
 .config.*
-flows_cred.json
-flows.json
+node_red_config/flows_cred.json
+node_red_config/flows.json
 
 package-lock.json
