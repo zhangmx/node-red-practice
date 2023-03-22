@@ -1,0 +1,8 @@
+{
+  "name": "uib-root",
+  "version": "6.1.1",
+  "dependencies": {},
+  "uibuilder": {
+    "packages": {}
+  }
+}

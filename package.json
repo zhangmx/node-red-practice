@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "sh -ac '. ./environment; npm run entry'",
+    "start": "env-cmd  npm run entry",
     "embed": "node ./src/index.js",
     "entry": "node-red -u ./node_red_config",
     "machine1": "node-red -u ./machine1 -s ./src/settings1.js",
@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/zhangmx/node-red-practice#readme",
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "jest": "^29.5.0"
   },
   "dependencies": {
