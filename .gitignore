@@ -110,3 +110,5 @@ node_red_config/flows_cred.json
 node_red_config/flows.json
 
 package-lock.json
+
+test.png
