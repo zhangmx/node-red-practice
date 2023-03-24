@@ -1,0 +1,13 @@
+{
+    "name": "node-red-project",
+    "description": "A Node-RED Project",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "node-red-contrib-echarts": "~1.0.0",
+        "node-red-contrib-prib-functions": "~0.18.0",
+        "node-red-contrib-ui-digital-display": "~1.0.3",
+        "node-red-contrib-ui-svg": "~2.3.1",
+        "node-red-dashboard": "~3.4.0"
+    }
+}

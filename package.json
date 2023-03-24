@@ -6,7 +6,8 @@
   "scripts": {
     "start": "env-cmd  npm run entry",
     "embed": "node ./src/index.js",
-    "entry": "node-red -u ./node_red_config",
+    "entry": "node-red -u ./node_red_base",
+    "entry-project": "node-red -u ./node_red_config",
     "machine1": "node-red -u ./machine1 -s ./src/settings1.js",
     "machine2": "node-red -u ./machine2 -s ./src/settings2.js",
     "postinstall": "cd ./node_red_config && npm install",
