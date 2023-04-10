@@ -388,6 +388,10 @@ module.exports = {
             //categories: ['subflows', 'common', 'function', 'network', 'sequence', 'parser', 'storage'],
         },
 
+        test: {
+            enabled: true
+        },
+
         projects: {
             /** To enable the Projects feature, set this value to true */
             enabled: false,
