@@ -7,9 +7,10 @@
     "start": "env-cmd  npm run entry",
     "embed": "node ./src/index.js",
     "entry": "node-red -u ./node_red_base",
-    "first1": "node-red -u ./node_red_config",
+    "first1": "node-red -u ./first1",
     "machine1": "node-red -u ./machine1 -s ./src/settings1.js",
     "machine2": "node-red -u ./machine2 -s ./src/settings2.js",
+    "machine3": "node-red -u ./machine3",
     "postinstall": "cd ./node_red_base && npm install",
     "test": "jest"
   },

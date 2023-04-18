@@ -11,7 +11,6 @@
         "node-red-contrib-uibuilder": "~6.1.1",
         "node-red-dashboard": "~3.3.1",
         "node-red-debugger": "~1.1.1",
-        "node-red-node-ui-table": "~0.4.3",
-        "nrlint": "^1.1.0"
+        "node-red-node-ui-table": "~0.4.3"
     }
 }

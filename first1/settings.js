@@ -21,10 +21,6 @@
  **/
 
 module.exports = {
-
-    // Add a `nrlint` entry pointing to your nrlint config file
-    nrlint: require("./.nrlintrc.js"),
-
 /*******************************************************************************
  * Flow File and User Directory Settings
  *  - flowFile
