@@ -1633,7 +1633,8 @@
         "y": 380,
         "wires": [
             [
-                "542296e.45ffa68"
+                "542296e.45ffa68",
+                "84d201a3af8345f1"
             ]
         ]
     },
@@ -1647,7 +1648,7 @@
         "console": false,
         "tostatus": false,
         "complete": "false",
-        "x": 630,
+        "x": 690,
         "y": 380,
         "wires": []
     },
@@ -1768,7 +1769,7 @@
         "type": "function",
         "z": "a72c14cefa22398c",
         "name": "function 1",
-        "func": "// node.warn(RED.settings.userDir);\n// node.warn(env.get(\"HOME\"));\n// node.warn(RED.util.getSetting());\n// node.warn(RED.util.getSetting(\"flowFile\"));\n// node.warn(node.path);\n\nnode.warn(global);\nvar RED_OR = global.get('node-red');\nnode.warn(RED_OR);\nvar settings = RED_OR.settings;\nvar userDir = settings.userDir;\nnode.warn(userDir);\nreturn msg;",
+        "func": "// node.warn(RED.settings.userDir);\n// node.warn(env.get(\"HOME\"));\n// node.warn(RED.util.getSetting());\n// node.warn(RED.util.getSetting(\"flowFile\"));\n// node.warn(node.path);\n\n// node.warn(global);\n// var RED_OR = global.get('node-red');\n// node.warn(RED_OR);\n// var settings = RED_OR.settings;\n// var userDir = settings.userDir;\n// node.warn(userDir);\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "initialize": "",
@@ -1808,6 +1809,22 @@
                 "45f8df1920b0aff8"
             ]
         ]
+    },
+    {
+        "id": "84d201a3af8345f1",
+        "type": "debug",
+        "z": "a72c14cefa22398c",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 420,
+        "wires": []
     },
     {
         "id": "e525703b.c983b",
