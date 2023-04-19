@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "ES2015",
+        "module": "ES2015",
+        "moduleResolution": "nodenext",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "checkJs": true,
+        "allowJs": true,
+        "typeRoots": [
+            "../../src/types",
+        ],
+        "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        "outDir": "../../resources",
+        "strict": true,
+        "noEmitHelpers": true,
+        "importHelpers": true
+    },
+    
+    "include": [
+        "./index.ts"
+    ]
+}
