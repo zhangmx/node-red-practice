@@ -32,16 +32,24 @@ It also use flow-manager to manage flows.
 npm start
 ```
 
-machine1(2) is the machine that runs Node-RED. Start with outside settings file `settings1(2).js` under `src` directory.
+```bash
+npm run first1
+```
 
-machine1 use port 1881, machine2 use port 1882.
+first1：（http://127.0.0.1:1888/） with sub project : https://github.com/zhangmx/node-red-practice-project
+
+include uibuilder\ node-red-contrib-simple-webdriver \ node-red-contrib-flow-asserter
+
+machine1：(http://127.0.0.1:1881/) is the machine that runs Node-RED. Start with outside settings file `settings1.js` under `src` directory.
+
+machine1：(http://127.0.0.1:1882/) is the machine that runs Node-RED. Start with outside settings file `settings2.js` under `src` directory.
 
 ```bash
 npm run machine1
 npm run machine2
 ```
 
-machine3 is the machine that runs Node-RED.  set to 1883 in `machine3/settings.js` file. Test nrlint.
+machine3：(http://127.0.0.1:1883/) is the machine that runs Node-RED.  in `machine3/settings.js` file. Try nrlint.
 
 ```bash
 npm run machine3
