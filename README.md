@@ -12,13 +12,13 @@ npm install
 
 ### 1. Run as embedded Node-RED server
 
-https://nodered.org/docs/user-guide/runtime/embedding
-
-Run as embedded Node-RED server. Listen on port 1988([Reply 1988](https://en.wikipedia.org/wiki/Reply_1988)).
-
 ```bash
 npm run embed
 ```
+
+https://nodered.org/docs/user-guide/runtime/embedding
+
+Run as embedded Node-RED server. Listen on port 1988([Reply 1988](https://en.wikipedia.org/wiki/Reply_1988)).
 
 > Note: this is not a good practice. It is better to run as standalone Node-RED server. It can not install ui-dashboard. UI dashboard is not available in embedded mode. Because `ui` url not included in express app.
 
@@ -39,6 +39,12 @@ machine1 use port 1881, machine2 use port 1882.
 ```bash
 npm run machine1
 npm run machine2
+```
+
+machine3 is the machine that runs Node-RED.  set to 1883 in `machine3/settings.js` file. Test nrlint.
+
+```bash
+npm run machine3
 ```
 
 ## Flows
