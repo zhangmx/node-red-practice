@@ -11,7 +11,8 @@
     "machine1": "node-red -u ./machine1 -s ./src/settings1.js",
     "machine2": "node-red -u ./machine2 -s ./src/settings2.js",
     "machine3": "node-red -u ./machine3",
-    "postinstall": "cd ./node_red_base && npm install",
+    "postinstall": "bash ./npm_postinstall.sh",
+    "clean": "npx rimraf ./**/node_modules",
     "test": "jest"
   },
   "repository": {
