@@ -32,28 +32,28 @@
         "id": "3a57f4c3.6a129c",
         "type": "tab",
         "label": "SM-Cat Example",
-        "disabled": true,
+        "disabled": false,
         "info": ""
     },
     {
         "id": "a72c14cefa22398c",
         "type": "tab",
-        "label": "controller",
-        "disabled": false,
+        "label": "dsm",
+        "disabled": true,
         "info": "",
         "env": []
     },
     {
         "id": "a35c3d75.a435b",
         "type": "tab",
-        "label": "Flow 2",
+        "label": "Automation",
         "disabled": true,
         "info": ""
     },
     {
         "id": "4f44ff00.dee59",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "break director",
         "disabled": true,
         "info": ""
     },
@@ -1621,6 +1621,93 @@
             [
                 "6673b726.95c6b8"
             ]
+        ]
+    },
+    {
+        "id": "df4f25d4f6dc81bf",
+        "type": "smxstate",
+        "z": "3a57f4c3.6a129c",
+        "name": "default demo",
+        "xstateDefinition": "// Available variables/objects/functions:\n// xstate\n// - .Machine\n// - .interpret\n// - .assign\n// - .send\n// - .sendParent\n// - .spawn\n// - .raise\n// - .actions\n//\n// Common\n// - setInterval, setTimeout, clearInterval, clearTimeout\n// - node.send, node.warn, node.log, node.error\n// - context.get, context.set\n// - flow.get, flow.set\n// - env.get\n// - util\n\nconst { assign } = xstate;\n\n// First define names guards, actions, ...\n\n/**\n * Guards\n */\nconst maxValueReached = (context, event) => {\n  return context.counter >= 10;\n};\n\n/**\n * Actions\n */\nconst incrementCounter = assign({\n  counter: (context, event) => context.counter + 1\n});\n\nconst resetCounter = assign({\n  counter: (context, event) => {\n    // Can send log messages via\n    //  - node.log\n    //  - node.warn\n    //  - node.error\n    //node.warn(\"RESET\");\n\n    // Can send messages to the second outport\n    // Specify an array to send multiple messages\n    // at once\n    //  - node.send(msg)\n    node.send({ payload: \"resetCounter\" });\n    \n    return 0;\n  }\n});\n\n/**\n * Activities\n */\nconst doStuff = () => {\n  // See https://xstate.js.org/docs/guides/activities.html\n  const interval = setInterval(() => {\n    node.send({ payload: 'BEEP' });\n  }, 1000);\n  return () => clearInterval(interval);\n};\n\n/***************************\n * Main machine definition * \n ***************************/\nreturn {\n  machine: {\n    context: {\n      counter: 0\n    },\n    initial: 'run',\n    states: {\n      run: {\n        initial: 'count',\n        states: {\n          count: {\n            on: {\n              '': { target: 'reset', cond: 'maxValueReached' }\n            },\n            after: {\n              1000: { target: 'count', actions: 'incrementCounter' }\n            }\n          },\n          reset: {\n            exit: 'resetCounter',\n            after: {\n              5000: { target: 'count' }\n            },\n            activities: 'doStuff'\n          }\n        },\n        on: {\n          PAUSE: 'pause'\n        }\n      },\n      pause: {\n        on: {\n          RESUME: 'run'\n        }\n      }\n    }\n  },\n  // Configuration containing guards, actions, activities, ...\n  // see above\n  config: {\n    guards: { maxValueReached },\n    actions: { incrementCounter, resetCounter },\n    activities: { doStuff }\n  },\n  // Define listeners (can be an array of functions)\n  //    Functions get called on every state/context update\n  listeners: (data) => {\n    //node.warn(data.state + \":\" + data.context.counter);\n  }\n};",
+        "noerr": 0,
+        "x": 550,
+        "y": 520,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "49ae59edaa0e6bd5",
+        "type": "smxstate",
+        "z": "3a57f4c3.6a129c",
+        "name": "tcp demo",
+        "xstateDefinition": "// Import shorthands from xstate object\nconst { assign } = xstate;\n\n// 定义名称守卫、动作、服务等\n\n// 守卫\nconst cmdSent = context => context.cmdSent;\nconst respReceived = context => context.respReceived;\n\n// 动作\nconst sendCmd = assign({ cmdSent: true });\nconst showResp = assign({ respReceived: true });\n\n// 服务 \nconst waitResp = (ctx, ev) => (cb) => {\n  setTimeout(() => {\n    cb({ type: 'respReceived' });\n  }, 3000);\n}\n\n// 状态机定义\nreturn {\n  machine: {\n    context: {\n      cmdSent: false,\n      respReceived: false\n    },\n    initial: 'ready',\n    states: {\n      ready: {\n        on: {\n          'sendCmd': {\n            target: 'waitingResp',\n            actions: sendCmd\n          }\n        }\n      },\n      waitingResp: {\n        invoke: { src: 'waitResp' },\n        on: {\n          'respReceived': {\n            target: 'ready',\n            actions: showResp\n          },\n          'timeout': 'timeout'\n        }\n      },\n      timeout: {\n        on: {\n          'respReceived': {\n            target: 'ready',\n            actions: showResp\n          }\n        }\n      }\n    }\n  },\n  config: {\n    guards: {\n      \"cmdSent\": cmdSent,\n      \"respReceived\": respReceived\n    },\n    actions: { sendCmd, showResp },\n    services: { waitResp }\n  }\n}",
+        "noerr": 0,
+        "x": 540,
+        "y": 920,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "7eac0898293dd494",
+        "type": "debug",
+        "z": "3a57f4c3.6a129c",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "13a14c323f6637af",
+        "type": "debug",
+        "z": "3a57f4c3.6a129c",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "ae416088a8f7d74a",
+        "type": "inject",
+        "z": "3a57f4c3.6a129c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 940,
+        "wires": [
+            []
         ]
     },
     {

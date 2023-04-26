@@ -1,0 +1,75 @@
+[
+    {
+        "id": "state_machine",
+        "type": "xstate-machine",
+        "name": "tcp_client_sm",
+        "schema": {
+            "initial": "ready",
+            "states": {
+                "ready": { 
+                    "on": {
+                        "send_cmd": {
+                            "target": "waiting_resp",
+                            "actions": "send_cmd" 
+                        }
+                    }
+                },    
+                "waiting_resp": {
+                    "on": {
+                        "resp": { 
+                            "target": "ready",
+                            "actions": "show_resp" 
+                        },
+                        "timeout": {
+                            "target": "timeout", 
+                            "actions": "resend_cmd"   
+                        }
+                    }
+                },
+                "timeout":{
+                    "on": { 
+                        "resp": {
+                            "target": "ready",
+                            "actions": "show_resp"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    {
+        "id": "send_cmd",
+        "type": "ui_button",
+        "label": "Send Cmd",
+        "group": "client", 
+        "on": {
+            "click": {
+                "target":"state_machine",
+                "event": "send_cmd" 
+            }
+        }
+    },
+    {
+        "id": "resp",
+        "type": "tcp in",
+        "group": "server",
+        "on": {
+            "data": {
+                "target":"state_machine",
+                "event": "resp"
+            }
+        } 
+    },
+    {
+        "id": "timeout",
+        "type": "delay", 
+        "group": "timer",
+        "timeout": "3",
+        "on": {
+            "timeout": {
+                "target":"state_machine",
+                "event": "timeout"
+            }
+        } 
+    }  
+] 
