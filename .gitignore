@@ -112,3 +112,6 @@ node_red_config/flows.json
 package-lock.json
 
 test.png
+/test-results/
+/playwright-report/
+/playwright/.cache/
