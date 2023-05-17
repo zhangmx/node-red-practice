@@ -5,7 +5,7 @@ This is a practice project for Node-RED.
 ## Installation
 
 ```bash
-npm install
+pnpm install -r
 ```
 
 ## Usage
