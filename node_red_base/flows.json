@@ -74,6 +74,22 @@
         "env": []
     },
     {
+        "id": "46db6abb98bf0fa7",
+        "type": "tab",
+        "label": "Promise",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a2b5e699632d99f7",
+        "type": "tab",
+        "label": "rxjs",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "8d6ebfa73499d6c8",
         "type": "subflow",
         "name": "On Delay",
@@ -1645,7 +1661,7 @@
         "xstateDefinition": "// Import shorthands from xstate object\nconst { assign } = xstate;\n\n// 定义名称守卫、动作、服务等\n\n// 守卫\nconst cmdSent = context => context.cmdSent;\nconst respReceived = context => context.respReceived;\n\n// 动作\nconst sendCmd = assign({ cmdSent: true });\nconst showResp = assign({ respReceived: true });\n\n// 服务 \nconst waitResp = (ctx, ev) => (cb) => {\n  setTimeout(() => {\n    cb({ type: 'respReceived' });\n  }, 3000);\n}\n\n// 状态机定义\nreturn {\n  machine: {\n    context: {\n      cmdSent: false,\n      respReceived: false\n    },\n    initial: 'ready',\n    states: {\n      ready: {\n        on: {\n          'sendCmd': {\n            target: 'waitingResp',\n            actions: sendCmd\n          }\n        }\n      },\n      waitingResp: {\n        invoke: { src: 'waitResp' },\n        on: {\n          'respReceived': {\n            target: 'ready',\n            actions: showResp\n          },\n          'timeout': 'timeout'\n        }\n      },\n      timeout: {\n        on: {\n          'respReceived': {\n            target: 'ready',\n            actions: showResp\n          }\n        }\n      }\n    }\n  },\n  config: {\n    guards: {\n      \"cmdSent\": cmdSent,\n      \"respReceived\": respReceived\n    },\n    actions: { sendCmd, showResp },\n    services: { waitResp }\n  }\n}",
         "noerr": 0,
         "x": 540,
-        "y": 920,
+        "y": 620,
         "wires": [
             [],
             []
@@ -1680,7 +1696,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 840,
-        "y": 940,
+        "y": 640,
         "wires": []
     },
     {
@@ -1705,7 +1721,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 240,
-        "y": 940,
+        "y": 640,
         "wires": [
             []
         ]
@@ -3711,6 +3727,555 @@
             [
                 "8d59acd4a0f42c8b"
             ]
+        ]
+    },
+    {
+        "id": "3b4b47a5.77a928",
+        "type": "inject",
+        "z": "46db6abb98bf0fa7",
+        "name": "inject",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 160,
+        "wires": [
+            [
+                "dbc66e1b.fef19"
+            ]
+        ]
+    },
+    {
+        "id": "dbc66e1b.fef19",
+        "type": "function",
+        "z": "46db6abb98bf0fa7",
+        "name": "getJoke",
+        "func": "const getJoke = function (firstname = \"Chuck\", lastname = \"Norris\") {\n\n    let promise = new Promise((resolve, reject) => {\n        msg.resolve = resolve;\n        msg.reject = reject;\n    });\n\n    msg.url = `http://127.0.0.1:1980/jokes/random?firstName=${firstname}&lastName=${lastname}`;\n    msg.method = 'GET';\n\n    node.send(Object.assign({}, msg));\n\n    return promise;\n};\n\nglobal.set('getJoke', getJoke);",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 160,
+        "wires": [
+            [
+                "7995241c.8025dc"
+            ]
+        ]
+    },
+    {
+        "id": "7995241c.8025dc",
+        "type": "http request",
+        "z": "46db6abb98bf0fa7",
+        "name": "",
+        "method": "use",
+        "ret": "obj",
+        "url": "",
+        "tls": "",
+        "x": 630,
+        "y": 160,
+        "wires": [
+            [
+                "d502bf3.123474"
+            ]
+        ]
+    },
+    {
+        "id": "a71e60af.8cb3a",
+        "type": "function",
+        "z": "46db6abb98bf0fa7",
+        "name": "getJoke()",
+        "func": "const joke = global.get('getJoke')();\n\njoke.then(joke => {\n    node.warn(joke);\n}).catch(error => {\n    node.error(error);\n});",
+        "outputs": "0",
+        "noerr": 0,
+        "x": 440,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "d99782c4.32a13",
+        "type": "inject",
+        "z": "46db6abb98bf0fa7",
+        "name": "run",
+        "props": [
+            {
+                "p": "payload",
+                "v": "",
+                "vt": "date"
+            },
+            {
+                "p": "topic",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 310,
+        "y": 260,
+        "wires": [
+            [
+                "a71e60af.8cb3a"
+            ]
+        ]
+    },
+    {
+        "id": "d502bf3.123474",
+        "type": "function",
+        "z": "46db6abb98bf0fa7",
+        "name": "resolve",
+        "func": "msg.resolve(msg.payload.value.joke);\n\n// reject\n// setTimeout(function () {\n//     msg.reject({message: 'Could not request joke'});\n// }, 2000);",
+        "outputs": "0",
+        "noerr": 0,
+        "x": 800,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "6cb62d4c.1bf0e4",
+        "type": "comment",
+        "z": "46db6abb98bf0fa7",
+        "name": "use above flow",
+        "info": "",
+        "x": 320,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ab2b906718f01fdf",
+        "type": "http in",
+        "z": "46db6abb98bf0fa7",
+        "name": "",
+        "url": "/jokes/random",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 350,
+        "y": 80,
+        "wires": [
+            [
+                "e92b49ad037d1433"
+            ]
+        ]
+    },
+    {
+        "id": "4127f7f0dacf6f69",
+        "type": "http response",
+        "z": "46db6abb98bf0fa7",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 810,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "e92b49ad037d1433",
+        "type": "change",
+        "z": "46db6abb98bf0fa7",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"value\":{\"joke\":\"xxxx\"}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 620,
+        "y": 80,
+        "wires": [
+            [
+                "4127f7f0dacf6f69"
+            ]
+        ]
+    },
+    {
+        "id": "65a090e6.1476c",
+        "type": "rx observer",
+        "z": "a2b5e699632d99f7",
+        "name": "",
+        "x": 450,
+        "y": 180,
+        "wires": [
+            [
+                "7034ff47.7d735"
+            ],
+            [
+                "10525566.03493b"
+            ]
+        ]
+    },
+    {
+        "id": "12e4978f.1c14a8",
+        "type": "rx subscriber",
+        "z": "a2b5e699632d99f7",
+        "name": "",
+        "auto_subscribe": false,
+        "bundle": false,
+        "x": 850,
+        "y": 180,
+        "wires": [
+            [
+                "1093291d.70e2f7"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "1093291d.70e2f7",
+        "type": "debug",
+        "z": "a2b5e699632d99f7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1030,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "10525566.03493b",
+        "type": "http request",
+        "z": "a2b5e699632d99f7",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "http://unreachable.url:123",
+        "tls": "",
+        "proxy": "",
+        "authType": "",
+        "x": 230,
+        "y": 120,
+        "wires": [
+            [
+                "65a090e6.1476c"
+            ]
+        ]
+    },
+    {
+        "id": "82af8421.224f68",
+        "type": "catch",
+        "z": "a2b5e699632d99f7",
+        "name": "",
+        "scope": [
+            "10525566.03493b"
+        ],
+        "uncaught": false,
+        "x": 210,
+        "y": 240,
+        "wires": [
+            [
+                "986b234.e1561e"
+            ]
+        ]
+    },
+    {
+        "id": "986b234.e1561e",
+        "type": "change",
+        "z": "a2b5e699632d99f7",
+        "name": "set msg.topic = error",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "error",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 280,
+        "wires": [
+            [
+                "65a090e6.1476c"
+            ]
+        ]
+    },
+    {
+        "id": "7034ff47.7d735",
+        "type": "rx operator",
+        "z": "a2b5e699632d99f7",
+        "name": "",
+        "bufferCount_bufferSize": 1,
+        "bufferCount_startEvery": "",
+        "catch_func": "return { topic : \"error\", payload: error }",
+        "distinct_key": "payload",
+        "mapTo_topic": "foo",
+        "mapTo_payload": "bar",
+        "mapTo_payloadType": "str",
+        "take_count": 1,
+        "filter_func": "return msg.payload > 0",
+        "scan_seed": 0,
+        "scan_seedType": "num",
+        "scan_func": "return acc + msg.payload",
+        "skip_count": 1,
+        "repeat_count": "3",
+        "retry_number": "3",
+        "timeout": 1000,
+        "delay": 1000,
+        "operatorType": "retry",
+        "x": 640,
+        "y": 180,
+        "wires": [
+            [
+                "12e4978f.1c14a8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "13b394a1.464c1b",
+        "type": "inject",
+        "z": "a2b5e699632d99f7",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "subscribe",
+        "payload": "",
+        "payloadType": "str",
+        "x": 620,
+        "y": 300,
+        "wires": [
+            [
+                "12e4978f.1c14a8"
+            ]
+        ]
+    },
+    {
+        "id": "1b9785be.6e12ba",
+        "type": "comment",
+        "z": "a2b5e699632d99f7",
+        "name": "press to subscribe to observable",
+        "info": "",
+        "x": 670,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "46ac64d8.11e48c",
+        "type": "comment",
+        "z": "a2b5e699632d99f7",
+        "name": "retry 3 times on error",
+        "info": "",
+        "x": 670,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "73df1bf.136a1e4",
+        "type": "comment",
+        "z": "a2b5e699632d99f7",
+        "name": "create observable",
+        "info": "",
+        "x": 470,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "9cfb1905.cf9ce8",
+        "type": "comment",
+        "z": "a2b5e699632d99f7",
+        "name": "catch http errors",
+        "info": "",
+        "x": 240,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "2a7738b4.a110b8",
+        "type": "debug",
+        "z": "a2b5e699632d99f7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 930,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "5b2ca394.0d1aec",
+        "type": "inject",
+        "z": "a2b5e699632d99f7",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "click",
+        "payloadType": "str",
+        "x": 210,
+        "y": 400,
+        "wires": [
+            [
+                "31da16f5.5b832a"
+            ]
+        ]
+    },
+    {
+        "id": "d502aec9.6bc65",
+        "type": "rx operator",
+        "z": "a2b5e699632d99f7",
+        "name": "",
+        "bufferCount_bufferSize": 1,
+        "bufferCount_startEvery": "",
+        "catch_func": "return { topic : \"error\", payload: error }",
+        "distinct_key": "payload",
+        "mapTo_topic": "foo",
+        "mapTo_payload": "bar",
+        "mapTo_payloadType": "str",
+        "take_count": 1,
+        "filter_func": "return msg.payload > 0",
+        "scan_seed": 0,
+        "scan_seedType": "num",
+        "scan_func": "return acc + msg.payload",
+        "skip_count": 1,
+        "repeat_count": 1,
+        "retry_number": 1,
+        "timeout": 1000,
+        "delay": 1000,
+        "operatorType": "timeInterval",
+        "x": 360,
+        "y": 500,
+        "wires": [
+            [
+                "7daea084.c6927"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "7daea084.c6927",
+        "type": "rx operator",
+        "z": "a2b5e699632d99f7",
+        "name": "",
+        "bufferCount_bufferSize": 1,
+        "bufferCount_startEvery": "",
+        "catch_func": "return { topic : \"error\", payload: error }",
+        "distinct_key": "payload",
+        "mapTo_topic": "foo",
+        "mapTo_payload": "bar",
+        "mapTo_payloadType": "str",
+        "take_count": 1,
+        "filter_func": "return msg.interval < 300",
+        "scan_seed": 0,
+        "scan_seedType": "num",
+        "scan_func": "return acc + msg.payload",
+        "skip_count": 1,
+        "repeat_count": 1,
+        "retry_number": 1,
+        "timeout": 1000,
+        "delay": 1000,
+        "operatorType": "filter",
+        "x": 550,
+        "y": 500,
+        "wires": [
+            [
+                "2ed7c0fc.d32e6"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "2d784b0c.7aa9c4",
+        "type": "rx subscriber",
+        "z": "a2b5e699632d99f7",
+        "name": "",
+        "auto_subscribe": true,
+        "bundle": false,
+        "x": 750,
+        "y": 460,
+        "wires": [
+            [
+                "2a7738b4.a110b8"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "2ed7c0fc.d32e6",
+        "type": "rx operator",
+        "z": "a2b5e699632d99f7",
+        "name": "",
+        "bufferCount_bufferSize": 1,
+        "bufferCount_startEvery": "",
+        "catch_func": "return { topic : \"error\", payload: error }",
+        "distinct_key": "payload",
+        "mapTo_topic": "",
+        "mapTo_payload": "double-click",
+        "mapTo_payloadType": "str",
+        "take_count": 1,
+        "filter_func": "return msg.payload > 0",
+        "scan_seed": 0,
+        "scan_seedType": "num",
+        "scan_func": "return acc + msg.payload",
+        "skip_count": 1,
+        "repeat_count": 1,
+        "retry_number": 1,
+        "timeout": 1000,
+        "delay": 1000,
+        "operatorType": "mapTo",
+        "x": 600,
+        "y": 400,
+        "wires": [
+            [
+                "2d784b0c.7aa9c4"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "31da16f5.5b832a",
+        "type": "rx observer",
+        "z": "a2b5e699632d99f7",
+        "name": "",
+        "x": 370,
+        "y": 400,
+        "wires": [
+            [
+                "d502aec9.6bc65"
+            ],
+            []
         ]
     }
 ]
